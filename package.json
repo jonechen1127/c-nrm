@@ -1,0 +1,26 @@
+{
+  "name": "c-nrm",
+  "version": "1.0.0",
+  "main": "index.js",
+  "bin": {
+    "c-nrm": "bin/index.js"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "JoneChen",
+  "license": "ISC",
+  "description": "a npm registry manager",
+  "dependencies": {
+    "c-nrm": "file:c-nrm-1.0.0.tgz",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "babel-jest": "^29.7.0",
+    "jest": "^29.7.0"
+  }
+}
