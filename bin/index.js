@@ -16,13 +16,24 @@ export { name, version };
 let argv = process.argv.slice(2);
 
 const dataObj = file2Obj('../data.json');
-console.log(dataObj);
+
 if (argv.indexOf('-v') != -1) {
   console.log(`${name} ${version}`);
 } else if (argv.indexOf('ls') !== -1) {
-  for (let key in dataObj) {
-    console.log(`${key}=>${dataObj[key]}`);
-  }
+  exec('npm config get registry', (err, stdout, stderr) => {
+    if (err) {
+      console.log(`exec error:${err}`);
+      return;
+    }
+
+    for (let key in dataObj) {
+      if (stdout.indexOf(dataObj[key]) != -1) {
+        console.log(chalk.greenBright(`* ${key}=>${dataObj[key]}`));
+      } else {
+        console.log(`  ${key}=>${dataObj[key]}`);
+      }
+    }
+  });
 } else if (argv.indexOf('add') !== -1) {
   let key = argv[1];
   let value = argv[2];
@@ -32,18 +43,21 @@ if (argv.indexOf('-v') != -1) {
 } else if (argv.indexOf('del') !== -1) {
   let key = argv[1];
   delete dataObj[key];
-  console.log(dataObj);
   obj2File(dataObj, '../data.json');
+  console.log('success deleted registry');
 } else if (argv.indexOf('update') !== -1) {
   let key = argv[1];
   let value = argv[2];
-  dataObj[key] = value;
-  console.log(chalk.blue(JSON.stringify(dataObj, null, 2)));
-  obj2File(dataObj, '../data.json');
+  if (dataObj[key]) {
+    dataObj[key] = value;
+    obj2File(dataObj, '../data.json');
+    console.log('success update registry');
+  } else {
+    console.log('key not exist');
+  }
 } else if (argv.indexOf('use') !== -1) {
   let key = argv[1];
   let res = dataObj[key];
-  console.log('res:' + res);
   if (res) {
     exec(`npm config set registry ${res}`, err => {
       if (err) {
@@ -56,7 +70,7 @@ if (argv.indexOf('-v') != -1) {
     console.log(chalk.red(`${key} is not in c-nrm list`));
   }
 } else if (argv.indexOf('list') !== -1) {
-  console.log(chalk.redBright(JSON.stringify(dataObj, null, 2)));
+  console.log(chalk.grey(JSON.stringify(dataObj, null, 2)));
 } else if (argv.indexOf('help') !== -1 || argv.indexOf('-h') !== -1) {
   console.log(
     chalk.yellowBright(`c-nrm help:

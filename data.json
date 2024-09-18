@@ -5,5 +5,5 @@
   "cnpm": "https://r.cnpmjs.org/",
   "taobao": "https://registry.npmmirror.com/",
   "npmMirror": "https://skimdb.npmjs.com/registry/",
-  "local": "http://localhost:8080"
+  "local": "http://localhost:8080/"
 }
