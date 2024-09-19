@@ -45,26 +45,28 @@ module.exports = {
 
 ## 搭建 npm 私服
 
-### 安装依赖
+### 安装依赖并启动
 
 ```bash
 npm install -g verdaccio
+verdaccio
 ```
 
-### 使用 npm install 安装
+### 切换镜像源
 
 ```bash
-npm install --registry=http://localhost:4873
+c-nrm use local（c-nrm会自建命令行工具）
+# npm config set registry http://localhost:4873/
 ```
 
 ### 使用 npm adduser 添加用户
 
 ```bash
-npm adduser --registry=http://localhost:4873
+npm adduser 
 ```
 
 ### 发布
 
 ```bash
-npm publish --registry=http://localhost:4873
+npm publish 
 ```
