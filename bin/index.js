@@ -74,11 +74,11 @@ if (argv.indexOf('-v') != -1) {
 } else if (argv.indexOf('help') !== -1 || argv.indexOf('-h') !== -1) {
   console.log(
     chalk.yellowBright(`c-nrm help:
-  c-nrm add <key> <value>  添加key-value
-  c-nrm del <key>          删除key-value
+  c-nrm add <key> <value>     添加key-value
+  c-nrm del <key>             删除key-value
   c-nrm update <key> <value>  更新key-value
-  c-nrm use <key>          使用key-value
-  c-nrm list               查看所有key-value
-  c-nrm help               查看帮助`)
+  c-nrm use <key>             使用key-value
+  c-nrm list                  查看所有key-value
+  c-nrm help                  查看帮助`)
   );
 }
