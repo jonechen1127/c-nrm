@@ -1,4 +1,4 @@
-#!/user/bin/env node
+#!/usr/bin/env node
 import chalk from 'chalk';
 import { file2Obj, obj2File } from '../utils/index.js';
 import { exec } from 'child_process';
@@ -81,4 +81,6 @@ if (argv.indexOf('-v') != -1) {
   c-nrm list                  查看所有key-value
   c-nrm help                  查看帮助`)
   );
+} else {
+  console.log('please input `c-nrm help`');
 }
