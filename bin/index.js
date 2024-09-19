@@ -11,7 +11,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 // 获取项目根目录
-const packageJsonPath = path.join(process.cwd(), 'package.json');
+const packageJsonPath = path.resolve(__dirname, '../package.json'); 
 const dataFilePath = path.resolve(__dirname, '../data.json'); // 使用绝对路径
 
 // 读取并解析 package.json 文件
