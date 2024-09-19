@@ -42,3 +42,29 @@ module.exports = {
 };
 
 ```
+
+## 搭建 npm 私服
+
+### 安装依赖
+
+```bash
+npm install -g verdaccio
+```
+
+### 使用 npm install 安装
+
+```bash
+npm install --registry=http://localhost:4873
+```
+
+### 使用 npm adduser 添加用户
+
+```bash
+npm adduser --registry=http://localhost:4873
+```
+
+### 发布
+
+```bash
+npm publish --registry=http://localhost:4873
+```
